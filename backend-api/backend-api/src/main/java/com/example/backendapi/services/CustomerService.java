@@ -22,12 +22,13 @@ public class CustomerService implements UserDetailsService
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     //No 1. Endpoint to allow a user to Register
-    public void insertIntoCustomer(Customer customer)
+    public Customer insertIntoCustomer(Customer customer)
     {
         String encodedPassword = bCryptPasswordEncoder.encode(customer.getPassword());
         customer.setPassword(encodedPassword);
 
-        customerRepository.insert(customer);
+        Customer newCustomer = customerRepository.insert(customer);
+        return newCustomer;
     }
 
     //No 2. Endpoint for a specific Customer
