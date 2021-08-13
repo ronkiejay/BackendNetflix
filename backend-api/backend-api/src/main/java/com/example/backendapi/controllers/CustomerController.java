@@ -29,9 +29,10 @@ public class CustomerController
         CustomizedResponse customizedResponse;
         try
         {
-            customizedResponse = new CustomizedResponse("Your information is successfully added as displayed below: ", null);
+            customizedResponse = new CustomizedResponse("Your information is successfully added as displayed below: ", Collections.singletonList(customerService.insertIntoCustomer(customer))
+            );
 
-            customerService.insertIntoCustomer(customer);
+
         }
         catch (Exception e)
         {
@@ -40,7 +41,7 @@ public class CustomerController
             return new ResponseEntity(customizedResponse, HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity(customer, HttpStatus.OK);
+        return new ResponseEntity(customizedResponse, HttpStatus.OK);
     }
 
 
