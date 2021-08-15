@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Collections;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 public class UserController
 {
